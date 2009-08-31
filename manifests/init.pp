@@ -1,2 +1,2 @@
-include "*"
-include "defines/*"
+import "*"
+import "defines/*"

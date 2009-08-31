@@ -4,8 +4,8 @@ define apache::site ( $ensure = 'present',
   $owner = 'www-data',
   $group = 'www-data',
   $prefix = 'www') {
-  include apache
-  fq_host="${prefix}.${name}"
+  include apache2
+  $fq_host="${prefix}.${name}"
 
   exec {
     "/usr/sbin/a2ensite $prefix.$name":
