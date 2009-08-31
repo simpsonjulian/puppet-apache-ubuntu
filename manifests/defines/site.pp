@@ -19,15 +19,15 @@ define apache::site ( $ensure = 'present',
   file { "/data/www/doc/$name":
       ensure => directory,
       owner => $owner,
-      group => $group,
-      require => File["/data/www/doc"];
+      group => $group;
     
     "/etc/apache2/sites-available/${fq_host}":
       ensure => $ensure,
       source => "puppet:///files/etc/apache2/sites-available/${files}",
       owner  => $owner,
       group  => $group,
-      notify => Exec["apache2 reload"];
+      notify => Exec["apache2 reload"],
+      require => File["/data/www/doc"];
         
   }
 }
