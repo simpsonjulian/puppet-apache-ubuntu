@@ -11,6 +11,8 @@ define apache::site ( $ensure = 'present',
     "/usr/sbin/a2ensite $prefix.$name":
     path => "/usr/bin:/usr/sbin:/bin",
     require => Package[$require_package],
+    require => File["/etc/apache2/sites-available/${fq_host}"],
+    require => File["/data/www/doc/$name"],
     unless => "test -f /etc/apache2/sites-enabled/${fq_host}"
   }
 
