@@ -22,8 +22,8 @@ define apache::site ( $ensure = 'present',
       group => $group;
     
     "/etc/apache2/sites-available/${fq_host}":
-      ensure => $ensure,
-      source => "puppet:///files/etc/apache2/sites-available/${fq_host}",
+      ensure => file,
+      source => "file:///home/root/infrastructure/etc/puppet/files/etc/apache2/sites-available/${fq_host}",
       owner  => $owner,
       group  => $group,
       notify => Exec["apache2 reload"],
