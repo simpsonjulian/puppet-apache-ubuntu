@@ -19,6 +19,9 @@ class apache2 {
 	} 
 
 	exec {
+                "apache2 mod rewrite":
+                  command => "/usr/sbin/a2enmod rewrite";
+
 		"apache2 reload": 
 		  require => Package["apache2"],
 		  command => "/etc/init.d/apache2 reload",
