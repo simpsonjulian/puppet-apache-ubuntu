@@ -9,7 +9,7 @@ define available_apache_site ($template = "apache-site.erb") {
       notify => Service[apache2],
       require =>  Class["apache2::install"];
 
-    "$www_doc_dir/$name":
+    "/data/www/doc/${name}":
       ensure => directory,
       owner => $owner,
       group => $group,
