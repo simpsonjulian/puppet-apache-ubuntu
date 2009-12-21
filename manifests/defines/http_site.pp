@@ -1,4 +1,4 @@
-define available-apache-site ($template = "apache-site.erb") {
+define available_apache_site ($template = "apache-site.erb") {
   file { 
     "$name":
       path => "/etc/apache2/sites-available/${name}",
@@ -43,6 +43,6 @@ define enabled_apache_site($owner = www-data, $group = root, $ensure = 'present'
 }
 
 define static_website { 
-  available-apache-site { "$name": }
-  enabled-apache-site { "$name": ensure => present }
+  available_apache_site { "$name": }
+  enabled_apache_site { "$name": ensure => present }
 }
