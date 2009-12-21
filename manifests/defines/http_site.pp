@@ -1,9 +1,9 @@
-define available_apache_site ($template = "apache-site.erb") {
+define available_apache_site ($template = "apache-site.erb", $owner = root, $group = root) {
   file { 
     "$name":
       path => "/etc/apache2/sites-available/${name}",
-      owner => root,
-      group => root,
+      owner => $owner,
+      group => $group,
       mode => 644,
       content => template($template),
       notify => Service[apache2],
