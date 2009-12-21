@@ -19,7 +19,7 @@ define available-apache-site ($template = "apache-site.erb") {
 
 }
 
-define enabled_apache_site($owner = www-data, $group = root $ensure => 'present') {
+define enabled_apache_site($owner = www-data, $group = root, $ensure = 'present') {
  case $ensure {
   'present' : { 
     exec {
@@ -38,6 +38,7 @@ define enabled_apache_site($owner = www-data, $group = root $ensure => 'present'
         require => Class["apache2::install"];
       }
 
+    }
   }
 }
 
