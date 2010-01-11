@@ -15,12 +15,10 @@ class apache2 {
   service { "apache2":
       enable => true,
       ensure => running,
-      require => Class["apache2::install"]
   } 
 
   exec {
     "apache2 reload": 
-      require => Class["apache2::install"],
       command => "/etc/init.d/apache2 reload",
       refreshonly => true
   }

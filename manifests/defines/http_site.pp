@@ -6,7 +6,7 @@ define available_apache_site ($template = "apache-site.erb", $owner = root, $gro
       group => $group,
       mode => 644,
       content => template($template),
-      notify => Service[apache2],
+      notify => Exec['apache2 reload'],
       require =>  Class["apache2::install"];
 
     "/${www_doc_dir}/${name}":

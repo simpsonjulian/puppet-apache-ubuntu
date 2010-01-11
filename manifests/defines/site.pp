@@ -16,11 +16,7 @@ define apache::site ( $ensure = 'present',
     unless => "test -f /etc/apache2/sites-enabled/${fq_host}"
   }
 
-  file { "/data/www/doc/$name":
-      ensure => directory,
-      owner => $owner,
-      group => $group;
-    
+  file { 
     "/etc/apache2/sites-available/${fq_host}":
       ensure => file,
       source => "puppet:///files/etc/apache2/sites-available/${fq_host}",
