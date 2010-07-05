@@ -22,6 +22,11 @@ define apache::site ( $ensure = 'present',
       group  => $group,
       notify => Exec["apache2 reload"],
       require => [File["/data/www/doc"],Class["apache2::install"]];
+
+    "/data/www/doc/${name}":
+      ensure => directory,
+      owner  => $owner,
+      group  => $group;
         
   }
 }
