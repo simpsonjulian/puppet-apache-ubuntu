@@ -10,10 +10,7 @@ define apache::site ( $ensure = 'present',
   exec {
     "/usr/sbin/a2ensite $prefix.$name":
     path => "/usr/bin:/usr/sbin:/bin",
-    require => Package[$require_package],
-    require => File["/etc/apache2/sites-available/${fq_host}"],
-    require => File["/data/www/doc/$name"],
-    require => Class["apache2::install"],
+    require => [Package[$require_package], File["/etc/apache2/sites-available/${fq_host}"], File["/data/www/doc/$name"], Class["apache2::install"]],
     unless => "test -f /etc/apache2/sites-enabled/${fq_host}"
   }
 
@@ -24,8 +21,7 @@ define apache::site ( $ensure = 'present',
       owner  => $owner,
       group  => $group,
       notify => Exec["apache2 reload"],
-      require => File["/data/www/doc"],
-      require => Class["apache2::install"];
+      require => [File["/data/www/doc"],Class["apache2::install"]];
         
   }
 }
