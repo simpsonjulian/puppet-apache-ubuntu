@@ -1,0 +1,9 @@
+# This file is generated from Puppet.  Do not edit by hand!
+<VirtualHost *>
+    ServerAdmin julian@juliansimpson.org
+    DocumentRoot <%= www_doc_dir %>/<%= name %>
+    ServerName <%= name %>
+    ServerAlias <%= name %> www.<%= name %>
+    ErrorLog <%= www_log_dir %>/<%= name %>-error_log
+    CustomLog <%= www_log_dir %>/<%= name %>-access_log common
+</VirtualHost>

@@ -5,7 +5,7 @@ define available_apache_site ($template = "apache-site.erb", $owner = root, $gro
       owner => $owner,
       group => $group,
       mode => 644,
-      content => template($template),
+      content => template("apache/$template"),
       notify => Exec['apache2 reload'],
       require =>  Class["apache2::install"];
 
