@@ -5,6 +5,12 @@ class apache2 {
       "/data/www": ensure => directory, require => File['/data'];
       "/data/www/doc": owner => www-data, ensure => directory, require => File['/data/www'];
       "/data/www/log": ensure => directory, require => File["/data/www"];  
+
+      "/etc/logrotate.d/apache2":
+        owner => root,
+        group => root,
+        mode => 0644,
+        source => "puppet:///apache/etc/logrotate.d/apache2";
     }
     package { 
       "apache2": ensure => installed;
