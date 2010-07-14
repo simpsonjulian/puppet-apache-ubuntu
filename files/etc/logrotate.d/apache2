@@ -1,4 +1,4 @@
-/data/www/log/*log /var/log/apache2/*.log {
+/var/log/apache2/*.log {
 	weekly
 	missingok
 	rotate 52
