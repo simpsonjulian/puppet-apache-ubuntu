@@ -1,4 +1,4 @@
-define available_apache_site ($template = "apache-site.erb", $owner = root, $group = root) {
+define available_apache_site ($template = "apache-site.erb", $owner = root, $group = root, $rails = false) {
   file { 
     "$name":
       path => "/etc/apache2/sites-available/${name}",
@@ -44,5 +44,10 @@ define enabled_apache_site($owner = www-data, $group = root, $ensure = 'present'
 
 define static_website { 
   available_apache_site { "$name": }
+  enabled_apache_site { "$name": ensure => present }
+}
+
+define rails_website {
+  available_apache_site { "$name": rails => true }
   enabled_apache_site { "$name": ensure => present }
 }

@@ -1,7 +1,12 @@
 # This file is generated from Puppet.  Do not edit by hand!
 <VirtualHost *>
     ServerAdmin julian@juliansimpson.org
+    <% if false == rails %>
     DocumentRoot <%= www_doc_dir %>/<%= name %>
+    <% else %>
+    PassengerEnabled true
+    DocumentRoot <%= www_rails_root %>/<%= name %>/current/public
+    <% end %>
     ServerName <%= name %>
     ServerAlias <%= name %> www.<%= name %>
     ErrorLog <%= www_log_dir %>/<%= name %>-error_log
