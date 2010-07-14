@@ -4,7 +4,7 @@
     <% if false == rails %>
     DocumentRoot <%= www_doc_dir %>/<%= name %>
     <% else %>
-    PassengerEnabled true
+    PassengerEnabled On
     DocumentRoot <%= www_rails_root %>/<%= name %>/current/public
     <% end %>
     ServerName <%= name %>
